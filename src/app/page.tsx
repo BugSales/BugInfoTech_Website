@@ -109,7 +109,7 @@ export default function Home() {
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                   </a>
-                  <a href="#services" className="btn btn-secondary" style={{ padding: "1rem 2rem" }}>
+                  <a href="/services" className="btn btn-secondary" style={{ padding: "1rem 2rem" }}>
                     Explore Our Services
                   </a>
                 </div>
@@ -219,6 +219,7 @@ export default function Home() {
               <ServiceCard
                 title="Website Development"
                 description="Custom responsive corporate websites, high-converting landing pages, and interactive portal platforms optimized for search engines."
+                linkHref="/services/website-development"
                 icon={
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -231,6 +232,7 @@ export default function Home() {
               <ServiceCard
                 title="Application Development"
                 description="High-performance, feature-rich web applications and native iOS/Android mobile applications designed for operational efficiency."
+                linkHref="/services/application-development"
                 icon={
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -243,6 +245,7 @@ export default function Home() {
               <ServiceCard
                 title="Software Development"
                 description="Custom CRM/ERP platforms, business tools, legacy system modernization, and secure integrations tailored to business rules."
+                linkHref="/services/software-development"
                 icon={
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
@@ -254,6 +257,7 @@ export default function Home() {
               <ServiceCard
                 title="Ecommerce Solutions"
                 description="Secure digital storefronts, shopping carts, visual checkout structures, payment gateway connections, and dashboard panels."
+                linkHref="/services/ecommerce"
                 icon={
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="9" cy="21" r="1"></circle>
@@ -383,11 +387,21 @@ export default function Home() {
                 gap: "1.5rem",
               }}
             >
-              <IndustryCard title="Healthcare Tech" iconType="healthcare" />
-              <IndustryCard title="Education Portals" iconType="education" />
-              <IndustryCard title="SMB Modernization" iconType="smb" />
-              <IndustryCard title="Startup Launch" iconType="startup" />
-              <IndustryCard title="Retail & Ecommerce" iconType="retail" />
+              <a href="/solutions/healthcare" style={{ display: "block" }}>
+                <IndustryCard title="Healthcare Tech" iconType="healthcare" />
+              </a>
+              <a href="/solutions/education" style={{ display: "block" }}>
+                <IndustryCard title="Education Portals" iconType="education" />
+              </a>
+              <a href="/solutions/small-business" style={{ display: "block" }}>
+                <IndustryCard title="SMB Modernization" iconType="smb" />
+              </a>
+              <a href="/solutions/startups" style={{ display: "block" }}>
+                <IndustryCard title="Startup Launch" iconType="startup" />
+              </a>
+              <a href="/solutions/retail" style={{ display: "block" }}>
+                <IndustryCard title="Retail & Ecommerce" iconType="retail" />
+              </a>
             </div>
           </div>
         </section>
@@ -412,31 +426,38 @@ export default function Home() {
                 {
                   title: "Cloud Services",
                   desc: "AWS/Azure environment setup, secure server migrations, and scalable hosting deployment.",
+                  href: "/services/cloud-services",
                 },
                 {
                   title: "IT Network Solutions",
                   desc: "Enterprise networking, routing setups, remote database architecture, and office configurations.",
+                  href: "/services/it-infrastructure",
                 },
                 {
                   title: "Cybersecurity Audits",
                   desc: "Penetration tests, firewalls configuration, SSL management, and data protection structures.",
+                  href: "/services/cybersecurity",
                 },
                 {
                   title: "Digital Marketing",
                   desc: "B2B search engine optimization, email campaigns setups, and conversion tracking configurations.",
+                  href: "/services/digital-marketing",
                 },
                 {
                   title: "Maintenance & Support",
                   desc: "Ongoing bug fixes, monthly system audits, backup operations, and emergency dev support.",
+                  href: "/services/it-support",
                 },
-              ].map((service, index) => (
-                <div
+              ].map((service) => (
+                <a
                   key={service.title}
+                  href={service.href}
                   className="glass-card scroll-reveal"
                   style={{
                     padding: "1.75rem 1.5rem",
                     borderLeft: "3px solid var(--secondary)",
                     backgroundColor: "rgba(15, 21, 36, 0.4)",
+                    display: "block",
                   }}
                 >
                   <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem", fontWeight: 700, color: "var(--text-white)" }}>
@@ -445,7 +466,7 @@ export default function Home() {
                   <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: "1.5" }}>
                     {service.desc}
                   </p>
-                </div>
+                </a>
               ))}
             </div>
           </div>

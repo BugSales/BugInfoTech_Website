@@ -1,10 +1,19 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const getHref = (href: string) => {
+    if (href.startsWith("#")) {
+      return pathname === "/" ? href : `/${href}`;
+    }
+    return href;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +59,7 @@ export default function Navbar() {
       >
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
           {/* Logo */}
-          <a href="#home" style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <a href={getHref("#home")} style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
             <svg
               width="36"
               height="36"
@@ -115,7 +124,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={getHref(link.href)}
                 style={{
                   fontSize: "0.95rem",
                   fontWeight: 500,
@@ -132,7 +141,7 @@ export default function Navbar() {
           {/* Action Button & Hamburger Toggle */}
           <div style={{ display: "flex", alignItems: "center", gap: "1.2rem" }}>
             <a
-              href="#contact"
+              href={getHref("#contact")}
               className="btn btn-outline desktop-nav-btn"
               style={{
                 display: "none",
@@ -208,7 +217,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={getHref(link.href)}
               onClick={() => setIsOpen(false)}
               style={{
                 fontSize: "1.2rem",
@@ -223,7 +232,7 @@ export default function Navbar() {
           ))}
         </nav>
         <a
-          href="#contact"
+          href={getHref("#contact")}
           onClick={() => setIsOpen(false)}
           className="btn btn-primary"
           style={{ width: "100%", marginTop: "1rem", padding: "0.9rem" }}
